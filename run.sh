@@ -50,7 +50,7 @@ else
 fi
 
 if [ "$(docker -H $docker_host ps -a | grep $container_name)" ]; then
-    echo container $docker_name already exists
+    echo container $container_name already exists
 
     echo stopping it...
     docker -H $docker_host stop $container_name
@@ -79,7 +79,7 @@ if true; then
         
         #copy config files into container
         echo copying files into container...
-        docker -H $1 cp ./secrets/config.json $container_name:/app/conf/config.json
+        docker -H $docker_host cp ./secrets/config.json $container_name:/app/conf/config.json
     else
         echo
     fi
